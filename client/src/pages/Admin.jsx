@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { API_BASE_URL } from "../config";
 
 const Admin = () => {
   // Active Tab state
@@ -72,7 +73,7 @@ const Admin = () => {
   // FETCH ELECTION SETTINGS
   const fetchSettings = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/candidates/election-settings");
+      const res = await axios.get(`${API_BASE_URL}/api/candidates/election-settings`);
       if (res.data) {
         setElTitle(res.data.title || "");
         setElDescription(res.data.description || "");
@@ -97,7 +98,7 @@ const Admin = () => {
   // FETCH CANDIDATES
   const fetchCandidates = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/candidates");
+      const res = await axios.get(`${API_BASE_URL}/api/candidates`);
       setCandidates(res.data);
     } catch (err) {
       console.error(err);
@@ -109,7 +110,7 @@ const Admin = () => {
   const fetchVoters = async () => {
     try {
       setLoadingVoters(true);
-      const res = await axios.get("http://localhost:5000/api/users/all", {
+      const res = await axios.get(`${API_BASE_URL}/api/users/all`, {
         headers: { Authorization: token }
       });
       setVoters(res.data);
@@ -142,7 +143,7 @@ const Admin = () => {
       const finalEnd = endDate && endTime ? `${endDate}T${endTime}:00` : undefined;
 
       await axios.post(
-        "http://localhost:5000/api/candidates/election-settings",
+        `${API_BASE_URL}/api/candidates/election-settings`,
         {
           title: elTitle,
           description: elDescription,
@@ -173,7 +174,7 @@ const Admin = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/candidates/add",
+        `${API_BASE_URL}/api/candidates/add`,
         { 
           name, 
           party, 
@@ -214,7 +215,7 @@ const Admin = () => {
     if (!window.confirm("Are you sure you want to delete this candidate?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/candidates/${id}`, {
+      await axios.delete(`${API_BASE_URL}/api/candidates/${id}`, {
         headers: { Authorization: token }
       });
       toast.success("Candidate deleted successfully!");
@@ -229,7 +230,7 @@ const Admin = () => {
     if (!window.confirm("WARNING: This will reset all votes to 0 and allow all voters to vote again. Proceed?")) return;
 
     try {
-      await axios.post("http://localhost:5000/api/users/reset-election", {}, {
+      await axios.post(`${API_BASE_URL}/api/users/reset-election`, {}, {
         headers: { Authorization: token }
       });
       toast.success("Election has been reset successfully!");

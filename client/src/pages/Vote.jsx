@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { API_BASE_URL } from "../config";
 
 const Vote = () => {
   const [candidates, setCandidates] = useState([]);
@@ -65,17 +66,17 @@ const Vote = () => {
     try {
       setLoading(true);
       // Fetch voter profile to see if they've voted
-      const profileRes = await axios.get("http://localhost:5000/api/users/profile", {
+      const profileRes = await axios.get(`${API_BASE_URL}/api/users/profile`, {
         headers: { Authorization: token },
       });
       setVoted(profileRes.data.hasVoted);
 
       // Fetch candidates
-      const candRes = await axios.get("http://localhost:5000/api/candidates");
+      const candRes = await axios.get(`${API_BASE_URL}/api/candidates`);
       setCandidates(candRes.data);
 
       // Fetch election settings
-      const settingsRes = await axios.get("http://localhost:5000/api/candidates/election-settings");
+      const settingsRes = await axios.get(`${API_BASE_URL}/api/candidates/election-settings`);
       setSettings(settingsRes.data);
     } catch (err) {
       console.error("Error loading voting page:", err);
@@ -139,7 +140,7 @@ const Vote = () => {
 
     try {
       await axios.post(
-        `http://localhost:5000/api/vote/${id}`,
+        `${API_BASE_URL}/api/vote/${id}`,
         {},
         {
           headers: {
@@ -174,7 +175,7 @@ const Vote = () => {
     if (!feedbackMsg.trim()) return;
     setSubmittingFeedback(true);
     try {
-      await axios.post("http://localhost:5000/api/feedback", {
+      await axios.post(`${API_BASE_URL}/api/feedback`, {
         message: feedbackMsg,
         rating: feedbackRating
       }, {

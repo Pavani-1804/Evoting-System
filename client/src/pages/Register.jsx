@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { API_BASE_URL } from "../config";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -51,7 +52,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/users/register", {
+      await axios.post(`${API_BASE_URL}/api/users/register`, {
         name,
         email,
         password,

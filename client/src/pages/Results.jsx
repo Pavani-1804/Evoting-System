@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { API_BASE_URL } from "../config";
 import { Pie, Bar } from "react-chartjs-2";
 import { 
   Chart as ChartJS, 
@@ -69,11 +70,11 @@ const Results = () => {
 
   const fetchResultsAndSettings = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/candidates/results");
+      const res = await axios.get(`${API_BASE_URL}/api/candidates/results`);
       setResults(res.data.results);
       setTotalVoters(res.data.totalVoters || 0);
 
-      const settingsRes = await axios.get("http://localhost:5000/api/candidates/election-settings");
+      const settingsRes = await axios.get(`${API_BASE_URL}/api/candidates/election-settings`);
       setSettings(settingsRes.data);
       
       if (settingsRes.data) {
