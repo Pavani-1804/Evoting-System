@@ -338,7 +338,7 @@ const Admin = () => {
                   : "bg-white/5 text-red-400 hover:bg-red-950/20"
               }`}
             >
-              ⚠ Danger Zone
+              ⚠️ Danger Zone
             </button>
           </div>
 
@@ -798,7 +798,7 @@ const Admin = () => {
                     Executing this action will erase all cast votes for all candidates (resetting their counters to 0) and reset the "hasVoted" flags for all registered users in the database back to "false".
                   </p>
                   <p className="text-xs text-red-500 font-semibold uppercase tracking-wider">
-                    ⚠ WARNING: This action is permanent and cannot be undone!
+                    ⚠️ WARNING: This action is permanent and cannot be undone!
                   </p>
                   
                   <button 
@@ -808,4 +808,14 @@ const Admin = () => {
                     Confirm and Reset Election Database
                   </button>
                 </div>
-              </div
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default Admin;

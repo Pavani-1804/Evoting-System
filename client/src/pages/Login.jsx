@@ -47,10 +47,12 @@ const Login = () => {
     }, reverse ? 40 : 80);
 
     return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subIdx, reverse, wordIdx, step]);
 
   useEffect(() => {
     setTypedHeader(words[wordIdx].substring(0, subIdx));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subIdx, wordIdx]);
 
   const handleLoginSubmit = async (e) => {
