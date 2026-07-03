@@ -1,5 +1,7 @@
 # Votexa - Decentralized E-Voting System
 
+🚀 **Live Demo**: [https://evoting-system-yron.vercel.app/](https://evoting-system-yron.vercel.app/)
+
 Votexa is a next-generation decentralized e-voting system designed to deliver secure, tamper-proof, and real-time ballot casting. Equipped with dual-factor OTP authentication, sleek glassmorphic aesthetics, and live audit ledger streams, it ensures maximum transparency and cryptographic voter integrity for modern digital elections.
 
 ---
