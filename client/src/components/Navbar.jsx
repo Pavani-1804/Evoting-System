@@ -44,7 +44,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="flex gap-8 text-sm">
+      <div className="flex gap-2.5 md:gap-8 text-[10px] md:text-sm font-semibold">
         {token ? (
           user?.role === "admin" ? (
             <>

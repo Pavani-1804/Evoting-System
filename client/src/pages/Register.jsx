@@ -72,7 +72,7 @@ const Register = () => {
     <div className="min-h-screen flex flex-col bg-black text-white digital-grid">
       <Navbar />
       <div className="flex-1 flex flex-col items-center justify-center px-4 pt-28 pb-12">
-        <div className="w-[400px] p-8 bg-white/5 border border-aqua/20 backdrop-blur-md rounded-2xl shadow-[0_0_30px_#00f5d4]">
+        <div className="max-w-md w-full p-6 md:p-8 bg-white/5 border border-aqua/20 backdrop-blur-md rounded-2xl shadow-[0_0_30px_#00f5d4]">
           <h2 className="text-3xl text-center text-aqua mb-6 font-bold min-h-[40px]">
             {typedHeader}
             <span className="text-aqua animate-pulse">|</span>

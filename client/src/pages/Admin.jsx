@@ -290,7 +290,7 @@ const Admin = () => {
 
         <div className="grid md:grid-cols-4 gap-8">
           {/* TAB SIDEBAR */}
-          <div className="md:col-span-1 space-y-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2 md:col-span-1">
             <button
               onClick={() => setActiveTab("schedule")}
               className={`w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition ${
